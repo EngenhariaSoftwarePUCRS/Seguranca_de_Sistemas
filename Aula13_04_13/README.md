@@ -4,7 +4,7 @@ Resposta
 
 Análise
 
-[R1, R2, R3, R4]
+[R1, R2, R3, R4, R5, R6]
 
 Matrizes de Risco (= Probabilidade x Impacto)
 
@@ -47,6 +47,12 @@ Um dos 3 administradores executa restauração de backup comprometido no Postgre
 |---|---|---|
 | 4 | 5 | 20 (Crítico) |
 
+### Janela temporal do evento 1
+
+- 0 a 24h: risco de propagação da corrupção de dados para novos backups.
+- A partir do 7º dia: aumento do esforço de recuperação e possível indisponibilidade parcial de históricos.
+- A partir do 30º dia: impacto acumulado em confiabilidade de laudos e risco reputacional elevado.
+
 ### Evento de ameaça 2
 
 Credenciais de cliente são comprometidas via phishing e o atacante burla o 2FA por engenharia social (ex.: troca de SIM/chip). Com isso, acessa e baixa laudos periciais sensíveis na plataforma de resultados.
@@ -65,6 +71,12 @@ Credenciais de cliente são comprometidas via phishing e o atacante burla o 2FA 
 | Probabilidade | Impacto | Nível |
 |---|---|---|
 | 4 | 4 | 16 (Crítico) |
+
+### Janela temporal do evento 2
+
+- 0 a 24h: possível acesso indevido a laudos sensíveis por conta comprometida.
+- A partir do 7º dia: expansão do impacto para mais contas sem reforço de monitoramento e resposta.
+- A partir do 30º dia: risco de questionamentos jurídicos e perda de confiança dos clientes afetados.
 
 ### Evento de ameaça 3
 
@@ -85,6 +97,12 @@ Um administrador interno com privilégio total altera ou apaga laudos e registro
 |---|---|---|
 | 3 | 5 | 15 (Alto) |
 
+### Janela temporal do evento 3
+
+- 0 a 24h: alterações maliciosas podem passar despercebidas sem auditoria ativa.
+- A partir do 7º dia: inconsistências em registros e dificuldade de rastrear autoria das mudanças.
+- A partir do 30º dia: comprometimento da credibilidade técnica dos resultados e retrabalho interno.
+
 ### Evento de ameaça 4
 
 Colaborador terceirizado com acesso físico amplo (equipe de limpeza) conecta dispositivo malicioso em estação do laboratório ou servidor, capturando credenciais e facilitando movimento lateral na rede interna.
@@ -103,6 +121,12 @@ Colaborador terceirizado com acesso físico amplo (equipe de limpeza) conecta di
 | Probabilidade | Impacto | Nível |
 |---|---|---|
 | 3 | 4 | 12 (Alto) |
+
+### Janela temporal do evento 4
+
+- 0 a 24h: possível coleta de credenciais após acesso físico indevido a estações.
+- A partir do 7º dia: chance de movimento lateral na rede interna e ampliação da superfície de ataque.
+- A partir do 30º dia: necessidade de saneamento mais amplo de endpoints e revisão de controles físicos.
 
 ### Evento de ameaça 5
 
@@ -123,6 +147,12 @@ Ataque de indisponibilidade (DoS) ao site/plataforma de consulta de resultados e
 |---|---|---|
 | 4 | 4 | 16 (Crítico) |
 
+### Janela temporal do evento 5
+
+- 0 a 24h: indisponibilidade imediata da plataforma de resultados para clientes.
+- A partir do 7º dia: acúmulo de atendimentos, atrasos operacionais e desgaste de comunicação.
+- A partir do 30º dia: impacto em SLAs, reputação e potencial perda de contratos sensíveis.
+
 ### Evento de ameaça 6
 
 Falha pontual na atualização de conteúdo da landing page pública (texto desatualizado por algumas horas), sem exposição de dados sensíveis e sem impacto direto na operação laboratorial.
@@ -142,6 +172,12 @@ Falha pontual na atualização de conteúdo da landing page pública (texto desa
 |---|---|---|
 | 2 | 2 | 4 (Baixo) |
 
+### Janela temporal do evento 6
+
+- 0 a 24h: percepção pontual de desorganização por conteúdo desatualizado.
+- A partir do 7º dia: impacto baixo, concentrado em experiência do usuário na página pública.
+- A partir do 30º dia: efeito residual mínimo, desde que haja correção e revisão editorial simples.
+
 ### Matriz de Risco Consolidada
 
 | Evento | Probabilidade | Impacto | Nível |
@@ -154,6 +190,12 @@ Falha pontual na atualização de conteúdo da landing page pública (texto desa
 | 6 | 2 | 2 | 4 (Baixo) |
 
 Risco final calculado = (20 + 16 + 15 + 12 + 16 + 4) / 150 = 0.553 (55.3% do risco máximo possível)
+
+### Resumo Executivo Breve
+
+- Curto prazo: os Eventos 1 (backups comprometidos), 2 (phishing) e 5 (indisponibilidade da plataforma) exigem resposta imediata por potencial de dano operacional e exposição de informação.
+- Médio prazo: os Eventos 3 e 4 demandam fortalecimento de auditoria, segregação de funções e controle físico.
+- Baixo impacto: o Evento 6 pode ser tratado como melhoria contínua de comunicação e qualidade.
 
 ### Priorização de tratamento (ordem sugerida)
 
